@@ -1301,8 +1301,8 @@ void HandleUI(void)
 					--menusub;
 				} while (menusub != 0 && (menumask & ((uint64_t)1 << menusub)) == 0);
 				if (menusub == 0 && (menumask & 1) == 0) { //If the first menu entry is disabled...
-					while ((menumask & ((uint64_t)(~0) << (menusub + 1))) != 0) menusub++; 
-					//Go to to last item 
+					while ((menumask & ((uint64_t)(~0) << (menusub + 1))) != 0) menusub++;
+					//Go to to last item
 				}
 			} else {
 				do
@@ -7113,14 +7113,14 @@ void PrintDirectory(int expand)
 			{
 				if (!strcmp(flist_DirItem(k)->altname, ".."))
 				{
-					strcpy(&s[19], " <UP-DIR>");
+					strcpy(&s[26], " \x07");
 				}
 				else
 				{
 					if (flist_DirItem(k)->flags & DT_EXT_ZIP) // mark ZIP archive with different suffix
-						strcpy(&s[22], " <zip>");
+						strcpy(&s[26], " \x06");
 					else
-						strcpy(&s[22], " <DIR>");
+						strcpy(&s[26], " \x05");
 				}
 				len2 = 0;
 			}
